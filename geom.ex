@@ -21,20 +21,28 @@ defmodule Geom do
     14
   ```
   """
+  @spec area(tuple) :: number
+  def area({atom, a, b}) do
+    area(atom, a, b)
+  end
+
   @spec area(atom, number, number) :: number
-  def area(:rectangle, a, b) when a >= 0 and b >= 0 do
+  defp area(:rectangle, a, b) when a >= 0 and b >= 0 do
     a * b
   end
 
-  def area(:triangle, a, b) when a >= 0 and b >= 0 do
+  @spec area(atom, number, number) :: number
+  defp area(:triangle, a, b) when a >= 0 and b >= 0 do
     a * b / 2.0
   end
 
-  def area(:ellipse, a, b ) when a >= 0 and b >= 0 do
+  @spec area(atom, number, number) :: number
+  defp area(:ellipse, a, b ) when a >= 0 and b >= 0 do
     :math.pi() * a * b
   end
 
-  def area(_, _, _) do
+  # Used as a catch all (bad practice!)
+  defp area(_, _, _) do
     0
   end
 end
