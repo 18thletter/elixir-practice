@@ -21,8 +21,16 @@ defmodule Geom do
     14
   ```
   """
-  @spec area(number, number) :: number
-  def area(a \\ 1, b \\ 1) do
+  @spec area(atom, number, number) :: number
+  def area(:rectangle, a, b) do
     a * b
+  end
+  
+  def area(:triangle, a, b) do
+    a * b / 2.0
+  end
+
+  def area(:ellipse, a, b ) do
+    :math.pi() * a * b
   end
 end
