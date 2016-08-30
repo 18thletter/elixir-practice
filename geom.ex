@@ -22,15 +22,16 @@ defmodule Geom do
   ```
   """
   @spec area(atom, number, number) :: number
-  def area(:rectangle, a, b) when a >= 0 and b >= 0 do
-    a * b
-  end
-
-  def area(:triangle, a, b) when a >= 0 and b >= 0 do
-    a * b / 2.0
-  end
-
-  def area(:ellipse, a, b ) when a >= 0 and b >= 0 do
-    :math.pi() * a * b
+  def area(atom, a, b) when a >= 0 and b >= 0 do
+    case atom do
+      :rectangle ->
+        a * b
+      :triangle ->
+        a * b / 2.0
+      :ellipse ->
+        :math.pi * a * b
+      _ ->
+        0
+    end
   end
 end
